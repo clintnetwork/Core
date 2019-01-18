@@ -33,6 +33,3 @@ Two operating modes are available on TypeDB, the `Standalone` mode that does not
 
 ## Triggers Notion
 You can easily set triggers to your TypeDB database, when you make the operation of your choice and run an associated callback.
-
-## TypeDB-Server
-It's a simple WebAPI server with a swagger that allow you to interact with the database of your choice
