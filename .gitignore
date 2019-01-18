@@ -1,0 +1,10 @@
+.idea
+.vs
+.vscode
+bin
+obj
+appsettings*.json
+Properties
+wwwroot/lib/
+wwwroot/css/*.min.css
+wwwroot/js/*.min.js
