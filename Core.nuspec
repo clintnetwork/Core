@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Type-DB.Core</id>
+    <version>0.0.0.3</version>
+    <title>Type-DB</title>
+    <authors>Clint.Network</authors>
+    <owners>Clint.Network</owners>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/Type-DB</projectUrl>
+    <iconUrl>https://avatars0.githubusercontent.com/u/46815662</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>💡 It's a serialized  in-memory and strongly typed database developed in C#</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright © 2019 Type-DB - All Rights Reserved</copyright>
+    <tags>inmemory-db cache json serializable strongly-typed database</tags>
+  </metadata>
+  <files>
+    <file src="LICENSE.txt" target="" />
+  </files>
+</package>

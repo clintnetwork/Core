@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TypeDB.Core
+namespace TypeDB
 {
     public class Core
     {

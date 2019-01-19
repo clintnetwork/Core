@@ -8,3 +8,4 @@ Properties
 wwwroot/lib/
 wwwroot/css/*.min.css
 wwwroot/js/*.min.js
+*.nupkg
