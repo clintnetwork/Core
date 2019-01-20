@@ -71,7 +71,7 @@ namespace TypeDB
         /// <summary>
         /// Create an Instance for Type-DB Server
         /// </summary>
-        public Instance Bind()
+        public Instance Build()
         {
             return CurrentInstance;
         }
