@@ -10,6 +10,8 @@ namespace TypeDB
     /// </summary>
     public class Instance : IDisposable
     {
+        public string Uid = Guid.NewGuid().ToString();
+
         /// <summary>
         /// TypeDB Instance Configuration
         /// </summary>
