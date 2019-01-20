@@ -34,6 +34,7 @@ namespace TypeDB
         /// </summary>
         public Database(Instance instance)
         {
+            this.Objects = new List<Object>();
             this.Instance = instance;
         }
 
@@ -67,9 +68,41 @@ namespace TypeDB
         /// <returns>An Object list</returns>
         public List<Object> GetAll() => this.Objects;
 
+        /// <summary>
+        /// Set a new Object or modify it if it already exists
+        /// </summary>
+        /// <typeparam name="T">Object Type</typeparam>
+        /// <param name="key">Object Key</param>
+        /// <param name="value">Object Value</param>
+        /// <param name="createIfNotExist">Create the object if it does not already exist, true by default</param>
         public void Set<T>(string key, T value, bool createIfNotExist)
         {
-            throw new NotImplementedException();
+            if (!this.Objects.Any(x => x.Key.Equals(key)) && createIfNotExist)
+            {
+                this.Objects.Add(new Object
+                {
+                    Key = key,
+                    Value = value,
+                    Meta = new Meta
+                    {
+                        OnCreated = DateTime.Now,
+                        Type = value.GetType()
+                    }
+                });
+            }
+            else if (this.Objects.Any(x => x.Key.Equals(key)))
+            {
+                var getObject = this.Objects.Where(x => x.Key.Equals(key)).FirstOrDefault();
+                getObject.Value = value;
+                getObject.Meta = new Meta()
+                {
+                    IsUpdated = true
+                };
+            }
+            else
+            {
+                throw new TypeDBNotFoundException($"The object '{key}' does not exists");
+            }
         }
 
         public int Update<T>(string key, T value)
@@ -77,14 +110,39 @@ namespace TypeDB
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get an Object by Guid
+        /// </summary>
+        /// <typeparam name="T">Object Type</typeparam>
+        /// <param name="guid">Object Guid to search</param>
         public T Get<T>(Guid guid)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get an Object by Key
+        /// </summary>
+        /// <typeparam name="T">Object Type</typeparam>
+        /// <param name="key">Object Key to search</param>
         public T Get<T>(string key)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(Objects.Where(x => x.Key.Equals(key)).FirstOrDefault().Value.ToString());
+            }
+            catch (InvalidCastException)
+            {
+                throw new Exception("The specified type is incorrect.");
+            }
+            catch (NullReferenceException)
+            {
+                throw new Exception("The specified object does not exist.");
+            }
+            catch (JsonReaderException)
+            {
+                throw new Exception("Unknown error.");
+            }
         }
 
         public void Expire(string key, TimeSpan ttl)
