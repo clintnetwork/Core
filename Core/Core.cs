@@ -3,10 +3,13 @@
 namespace TypeDB
 {
     /// <summary>
-    /// The TypeDB Core Object
+    /// TypeDB Core Object
     /// </summary>
     public class Core
     {
+        /// <summary>
+        /// Set the actual configured (or not) Instance
+        /// </summary>
         private readonly Instance CurrentInstance;
 
         /// <summary>

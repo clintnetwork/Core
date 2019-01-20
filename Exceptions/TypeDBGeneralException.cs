@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace TypeDB
 {
+    /// <summary>
+    /// The mostly used TypeDB Exception
+    /// </summary>
     [Serializable]
     internal class TypeDBGeneralException : Exception
     {

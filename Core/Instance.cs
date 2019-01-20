@@ -5,6 +5,9 @@ using TypeDB.Interfaces;
 
 namespace TypeDB
 {
+    /// <summary>
+    /// TypeDB Instance Object
+    /// </summary>
     public class Instance : IDisposable
     {
         /// <summary>

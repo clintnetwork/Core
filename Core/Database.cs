@@ -8,6 +8,9 @@ using TypeDB.Interfaces;
 
 namespace TypeDB
 {
+    /// <summary>
+    /// TypeDB Database Object
+    /// </summary>
     public class Database : IDatabase
     {
         /// <summary>
