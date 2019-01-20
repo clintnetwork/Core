@@ -13,7 +13,7 @@
     <PackageId>Type-DB Core</PackageId>
     <Version>0.1</Version>
     <PackageTags>inmemory-db cache json serializable strongly-typed database</PackageTags>
-    <AssemblyVersion>0.0.0.30</AssemblyVersion>
+    <AssemblyVersion>0.0.0.37</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

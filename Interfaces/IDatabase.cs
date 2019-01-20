@@ -14,7 +14,7 @@ namespace TypeDB.Interfaces
         string Print(string key);
         string PrintAll();
 
-        void Set<T>(string key, T value, bool createIfNotExist = false);
+        void Set<T>(string key, T value, bool createIfNotExist = true);
         T Get<T>(Guid guid);
         T Get<T>(string key);
 

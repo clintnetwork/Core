@@ -23,6 +23,11 @@ namespace TypeDB
         public DateTime Expiration { get; set; } = DateTime.MaxValue;
 
         /// <summary>
+        /// Define if the object is edited
+        /// </summary>
+        public bool IsUpdated { get; set; }
+
+        /// <summary>
         /// Store the Object Type
         /// </summary>
         public Type Type { get; set; }
