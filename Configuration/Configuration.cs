@@ -15,6 +15,21 @@ namespace TypeDB
         public Mode Mode { get; set; } = Mode.Standalone;
 
         /// <summary>
+        /// Define if it's a Server Instance
+        /// </summary>
+        internal bool IsBinded { get; set; } = false;
+
+        /// <summary>
+        /// Define if the Instance will be persistent, the default is false
+        /// </summary>
+        internal bool IsPersistent { get; set; } = false;
+
+        /// <summary>
+        /// Define if the Instance is Sealed
+        /// </summary>
+        internal bool IsSealed { get; set; } = false;
+
+        /// <summary>
         /// Define the Endpoint, it's only used if the mode is Mode.Remote
         /// </summary>
         public IPEndPoint Endpoint { get; set; } = new IPEndPoint(IPAddress.Loopback, 777);
@@ -30,14 +45,9 @@ namespace TypeDB
         public EncryptionType Encryption { get; set; } = EncryptionType.None;
 
         /// <summary>
-        /// Define if the Instance will be persistent, the default is false
-        /// </summary>
-        public bool IsPersistent { get; set; } = false;
-
-        /// <summary>
         /// Define if the Instance will use SSL, the default is false
         /// </summary>
-        public bool UseSSL { get; set; } = false;
+        //public bool UseSSL { get; set; } = false;
 
         /// <summary>
         /// Load a Configuration from a JSON File
