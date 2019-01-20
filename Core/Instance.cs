@@ -7,8 +7,15 @@ namespace TypeDB
 {
     public class Instance : IDisposable
     {
+        /// <summary>
+        /// TypeDB Instance Configuration
+        /// </summary>
         public Configuration Configuration { get; set; }
 
+        /// <summary>
+        /// TypeDB Database List
+        /// </summary>
+        /// TODO: implement pipeline
         private List<Database> Databases { get; set; }
 
         //private Authentication Authentication { get; set; }
@@ -16,6 +23,9 @@ namespace TypeDB
         //private List<Trigger> Triggers { get; set; }
         //private List<Script> Scripts { get; set; }
 
+        /// <summary>
+        /// Initialize a TypeDB Instance and the Database List
+        /// </summary>
         public Instance()
         {
             this.Databases = new List<Database>();
@@ -100,7 +110,7 @@ namespace TypeDB
         }
 
         /// <summary>
-        /// Dispose of the TypeDB instance
+        /// Dispose the TypeDB Instance
         /// </summary>
         public void Dispose()
         {

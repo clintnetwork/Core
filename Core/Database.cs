@@ -10,11 +10,25 @@ namespace TypeDB
 {
     public class Database : IDatabase
     {
+        /// <summary>
+        /// The parent Instance
+        /// </summary>
         public Instance Instance { get; set; }
+
+        /// <summary>
+        /// The Databae Name
+        /// </summary>
         public string Name { get; set; }
 
-        public List<Object> Objects { get; set; }    //TODO: implement pipeline
+        /// <summary>
+        /// The TypeDB Objects mist in the current Database
+        /// </summary>
+        /// TODO: implement pipeline
+        public List<Object> Objects { get; set; }
 
+        /// <summary>
+        /// Initialize the Database with parent Instance
+        /// </summary>
         public Database(Instance instance)
         {
             this.Instance = instance;
@@ -148,4 +162,4 @@ namespace TypeDB
         }
         #endregion
     }
-}
+}   

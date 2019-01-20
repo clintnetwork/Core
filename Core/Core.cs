@@ -2,6 +2,9 @@
 
 namespace TypeDB
 {
+    /// <summary>
+    /// The TypeDB Core Object
+    /// </summary>
     public class Core
     {
         private readonly Instance CurrentInstance;
@@ -15,7 +18,7 @@ namespace TypeDB
         }
 
         /// <summary>
-        /// Initialize TypeDB and define a running mode
+        /// Initialize TypeDB and define a running Mode
         /// </summary>
         /// <param name="mode">The Mode to use</param>
         public Core(Mode mode)
@@ -39,7 +42,7 @@ namespace TypeDB
         }
 
         /// <summary>
-        /// Connect the configured instance
+        /// Connect the configured Instance
         /// </summary>
         public Instance Connect()
         {
@@ -65,7 +68,6 @@ namespace TypeDB
         /// <summary>
         /// Create an Instance for Type-DB Server
         /// </summary>
-        /// <returns></returns>
         public Instance Bind()
         {
             return CurrentInstance;
