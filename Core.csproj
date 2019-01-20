@@ -10,10 +10,10 @@
     <PackageProjectUrl>https://github.com/Type-DB</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Type-DB</RepositoryUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/46815662?s=200&amp;v=4</PackageIconUrl>
-    <PackageId>Type-DB Core</PackageId>
+    <PackageId>Type-DB.Core</PackageId>
     <Version>0.1</Version>
     <PackageTags>inmemory-db cache json serializable strongly-typed database</PackageTags>
-    <AssemblyVersion>0.0.0.37</AssemblyVersion>
+    <AssemblyVersion>0.0.0.123</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,10 +30,10 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pipeline\" />
     <Folder Include="Replication\" />
   </ItemGroup>
 

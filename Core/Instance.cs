@@ -10,18 +10,25 @@ namespace TypeDB
     /// </summary>
     public class Instance : IDisposable
     {
+        private readonly Core Root;
+
         public string Uid = Guid.NewGuid().ToString();
 
         /// <summary>
         /// TypeDB Instance Configuration
         /// </summary>
-        public Configuration Configuration { get; set; }
+        internal Configuration Configuration { get; set; }
+
+        /// <summary>
+        /// Define the Private Configuration
+        /// </summary>
+        //private readonly PrivateConfiguration privateConfiguration;
 
         /// <summary>
         /// TypeDB Database List
         /// </summary>
         /// TODO: implement pipeline
-        private List<Database> Databases { get; set; }
+        internal List<Database> Databases { get => this.Root.Pipeline.GetDatabases(); set => this.Root.Pipeline.SetDatabases(value); }
 
         //private Authentication Authentication { get; set; }
         //private List<Right> Rights { get; set; }
@@ -31,9 +38,9 @@ namespace TypeDB
         /// <summary>
         /// Initialize a TypeDB Instance and the Database List
         /// </summary>
-        public Instance()
+        public Instance(Core core)
         {
-            this.Databases = new List<Database>();
+            this.Root = core;
         }
 
         /// <summary>
@@ -48,7 +55,7 @@ namespace TypeDB
             }
             else
             {
-                this.Databases.Add(new Database(this)
+                SetAndEmitDatabase(new Database(this)
                 {
                     Name = databaseName
                 });
@@ -59,7 +66,7 @@ namespace TypeDB
         /// Open a TypeDB database
         /// </summary>
         /// <param name="databaseName">'default' is the default database name</param>
-        /// <param name="createIfNotExist">If the database does not exist, it will automatically create</param>
+        /// <param name="createIfNotExist">If the database does not exist, it will created automatically</param>
         /// <returns></returns>
         public IDatabase OpenDatabase(string databaseName = "default", bool createIfNotExist = false)
         {
@@ -69,7 +76,7 @@ namespace TypeDB
             }
             else if(createIfNotExist)
             {
-                this.Databases.Add(new Database(this)
+                SetAndEmitDatabase(new Database(this)
                 {
                     Name = databaseName
                 });
@@ -80,6 +87,13 @@ namespace TypeDB
             {
                 throw new TypeDBNotFoundException($"The database '{databaseName}' does not exist.");
             }
+        }
+
+        private void SetAndEmitDatabase(Database database)
+        {
+            var tempDatabases = this.Databases;
+            tempDatabases.Add(database);
+            this.Databases = tempDatabases;
         }
 
         /// <summary>
@@ -102,7 +116,7 @@ namespace TypeDB
         /// Drop a TypeDB database
         /// </summary>
         /// <param name="databaseName">The name of the database</param>
-        public void DropDatabase(string databaseName)
+        public void DropDatabase(string databaseName = "default")
         {
             if (this.Databases.Any(x => x.Name.Equals(databaseName)))
             {

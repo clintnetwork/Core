@@ -10,29 +10,49 @@ namespace TypeDB
         /// <summary>
         /// Set the actual configured (or not) Instance
         /// </summary>
-        private readonly Instance CurrentInstance;
+        internal readonly Instance CurrentInstance;
+
+        internal Pipeline Pipeline { get; set; }
 
         /// <summary>
         /// Initialize TypeDB
         /// </summary>
         public Core()
         {
-            this.CurrentInstance = new Instance();
+            this.Pipeline = new Pipeline(this);
+            this.CurrentInstance = new Instance(this);
         }
 
         /// <summary>
         /// Initialize TypeDB and define a running Mode
         /// </summary>
-        /// <param name="mode">The Mode to use</param>
-        public Core(Mode mode)
+        /// <param name="mode">The Mode to use, Mode.Standalone is the default value</param>
+        public Core(Mode mode = Mode.Standalone)
         {
-            this.CurrentInstance = new Instance()
+            this.Pipeline = new Pipeline(this);
+            this.CurrentInstance = new Instance(this)
             {
-                Configuration = new Configuration()
+                Configuration = new Configuration
                 {
                     Mode = mode
                 }
             };
+        }
+
+        public Core UsePersistence()
+        {
+            this.CurrentInstance.Configuration.IsPersistent = true;
+            return this;
+        }
+
+        public Core UseReplication()
+        {
+            return this;
+        }
+
+        public Core UseTriggers()
+        {
+            return this;
         }
 
         /// <summary>
@@ -73,6 +93,7 @@ namespace TypeDB
         /// </summary>
         public Instance Build()
         {
+            this.CurrentInstance.Configuration.IsBinded = true;
             return CurrentInstance;
         }
     }

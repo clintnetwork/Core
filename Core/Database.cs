@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TypeDB.Dumping;
 using TypeDB.Interfaces;
+using TypeDB.Utils;
 
 namespace TypeDB
 {
@@ -13,6 +14,7 @@ namespace TypeDB
     /// </summary>
     public class Database : IDatabase
     {
+
         /// <summary>
         /// The parent Instance
         /// </summary>
@@ -23,11 +25,25 @@ namespace TypeDB
         /// </summary>
         public string Name { get; set; }
 
+        private List<Object> _objects;
+
         /// <summary>
-        /// The TypeDB Objects mist in the current Database
+        /// The TypeDB Objects list in the current Database
         /// </summary>
         /// TODO: implement pipeline
-        public List<Object> Objects { get; set; }
+        public List<Object> Objects
+        {
+            get
+            {
+                //Console.WriteLine($"> object readed");
+                return this._objects;
+            }
+            set
+            {
+                //Console.WriteLine($"> object writed");
+                this._objects = value;
+            }
+        }
 
         /// <summary>
         /// Initialize the Database with parent Instance
@@ -65,7 +81,7 @@ namespace TypeDB
         /// <summary>
         /// Return all the database objects
         /// </summary>
-        /// <returns>An Object list</returns>
+        /// <returns>An Object list</returns>;
         public List<Object> GetAll() => this.Objects;
 
         /// <summary>
@@ -75,7 +91,8 @@ namespace TypeDB
         /// <param name="key">Object Key</param>
         /// <param name="value">Object Value</param>
         /// <param name="createIfNotExist">Create the object if it does not already exist, true by default</param>
-        public void Set<T>(string key, T value, bool createIfNotExist)
+        
+        public void Set<T>(string key, T value, bool createIfNotExist = true)
         {
             if (!this.Objects.Any(x => x.Key.Equals(key)) && createIfNotExist)
             {
@@ -96,6 +113,7 @@ namespace TypeDB
                 getObject.Value = value;
                 getObject.Meta = new Meta()
                 {
+                    OnEdited = DateTime.Now,
                     IsUpdated = true
                 };
             }
@@ -115,10 +133,10 @@ namespace TypeDB
         /// </summary>
         /// <typeparam name="T">Object Type</typeparam>
         /// <param name="guid">Object Guid to search</param>
-        public T Get<T>(Guid guid)
+        /*public T Get<T>(Guid guid)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         /// <summary>
         /// Get an Object by Key
@@ -147,12 +165,32 @@ namespace TypeDB
 
         public void Expire(string key, TimeSpan ttl)
         {
-            throw new NotImplementedException();
+            if (this.Objects.Any(x => x.Key.Equals(key)))
+            {
+                var getObjectMeta = this.Objects.Where(x => x.Key.Equals(key)).FirstOrDefault().Meta;
+                getObjectMeta.Expiration = DateTime.Now.AddMinutes(ttl.TotalMinutes);
+                getObjectMeta.IsUpdated = true;
+                this.Objects.Where(x => x.Key.Equals(key)).FirstOrDefault().Meta = getObjectMeta;
+            }
         }
 
         public void Increment<T>(string key, T value)
         {
-            throw new NotImplementedException();
+            if(value.IsNumericType())
+            {
+                if(this.Exist(key))
+                {
+                    this.Set(key, this.Get<double>(key) + (value as double?));
+                }
+                else
+                {
+                    this.Set(key, value);
+                }
+            }
+            else
+            {
+                throw new TypeDBValueException("It's not a numeric type.");
+            }
         }
 
         public void Decrement<T>(string key, T value)

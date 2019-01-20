@@ -15,8 +15,10 @@ namespace TypeDB.Interfaces
         string PrintAll();
 
         void Set<T>(string key, T value, bool createIfNotExist = true);
-        T Get<T>(Guid guid);
+        //T Get<T>(Guid guid);
         T Get<T>(string key);
+
+        int Update<T>(string key, T value);
 
         void Increment<T>(string key, T value);
         void Decrement<T>(string key, T value);
@@ -24,8 +26,6 @@ namespace TypeDB.Interfaces
         void Expire(string key, TimeSpan ttl);
         void Lock(string key);
         void Unlock(string key);
-
-        int Update<T>(string key, T value);
 
         void Drop(string key);
         void Drop(Predicate<Object> keys);

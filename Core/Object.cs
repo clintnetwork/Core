@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using TypeDB.Interfaces;
 
 namespace TypeDB
@@ -36,6 +35,8 @@ namespace TypeDB
         /// Define if the Object is signed, the default is false
         /// </summary>
         public bool IsSigned { get; set; } = false;
+
+        internal string Signature { get; set; }
 
         /// <summary>
         /// Object's Value, serialised before writed
