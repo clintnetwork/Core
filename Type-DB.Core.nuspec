@@ -3,12 +3,13 @@
   <metadata>
     <id>Type-DB.Core</id>
     <version>0.0.0.3</version>
-    <title>Type-DB</title>
+    <title>Type-DB.Core</title>
     <authors>Clint.Network</authors>
     <owners>Clint.Network</owners>
     <license type="file">LICENSE.md</license>
-    <projectUrl>https://github.com/Type-DB</projectUrl>
+    <projectUrl>https://github.com/Type-DB/Core</projectUrl>
     <iconUrl>https://avatars0.githubusercontent.com/u/46815662</iconUrl>
+    <repository type="git" url="https://github.com/Type-DB/Core" commit="6a9006471230a4c9ccedabf5caf2a7a95eeec8e8" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>💡 It's a serialized  in-memory and strongly typed database developed in C#</description>
     <releaseNotes></releaseNotes>
