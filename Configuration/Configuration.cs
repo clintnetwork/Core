@@ -32,7 +32,7 @@ namespace TypeDB
         /// <summary>
         /// Define the Endpoint, it's only used if the mode is Mode.Remote
         /// </summary>
-        public IPEndPoint Endpoint { get; set; } = new IPEndPoint(IPAddress.Loopback, 777);
+        public Endpoint Endpoint { get; set; } = new Endpoint("localhost", 777);
 
         /// <summary>
         /// Define the Authentication parameters
