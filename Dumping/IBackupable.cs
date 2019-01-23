@@ -4,10 +4,10 @@ namespace TypeDB.Dumping
 {
     public interface IBackupable
     {
-        string Dump();
-        void Restore();
+        string Save();
+        void SaveAs(string filename);
 
-        void DumpToFile(string filename);
+        void Restore();
         void RestoreFromFile(string filename);
     }
 }
