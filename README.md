@@ -12,6 +12,7 @@ Type-DB is a serialized, in-memory and strongly typed database system developed 
 ![](https://img.shields.io/badge/NuGet-0.0.0.152-blue.svg)
 
 > **Warning**: Type-DB is currently in construction, if you would like to help us, contact me@clint.network
+----
 
 ### What is Type-DB ?
 
