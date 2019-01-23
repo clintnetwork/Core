@@ -1,10 +1,10 @@
 ## TYPE-DB MANIFEST
 
-=> Serializable
+-> Serializable
 
-=> In-Memory
+-> In-Memory
 
-=> Strongly Typed
+-> Strongly Typed
 
 	+TypeDB
 
