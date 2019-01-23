@@ -99,6 +99,10 @@ namespace TypeDB
         /// <param name="connectionString">Connection String</param>
         public Instance Connect(string connectionString)
         {
+            if(this.CurrentInstance.Configuration.Mode == Mode.Standalone)
+            {
+                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+            }
             return this.Connect();
         }
 
@@ -108,6 +112,10 @@ namespace TypeDB
         /// <param name="connectionString">Connection String as an Uri</param>
         public Instance Connect(Uri connectionString)
         {
+            if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
+            {
+                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+            }
             return this.Connect();
         }
 
@@ -117,6 +125,15 @@ namespace TypeDB
         /// <param name="iPEndPoint">Connection String as an IPEndPoint</param>
         public Instance Connect(IPEndPoint iPEndPoint)
         {
+            if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
+            {
+                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+            }
+            this.CurrentInstance.Configuration.Endpoint = new Endpoint()
+            {
+                Host = iPEndPoint.ToString(),
+                Port = iPEndPoint.Port
+            };
             return this.Connect();
         }
 
@@ -126,7 +143,15 @@ namespace TypeDB
         /// <param name="dnsEndPoint">Connection String as a DnsEndPoint</param>
         public Instance Connect(DnsEndPoint dnsEndPoint)
         {
-            this.CurrentInstance.Configuration.Endpoint = dnsEndPoint;
+            if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
+            {
+                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+            }
+            this.CurrentInstance.Configuration.Endpoint = new Endpoint()
+            {
+                Host = dnsEndPoint.Host,
+                Port = dnsEndPoint.Port,
+            };
             return this.Connect();
         }
 
