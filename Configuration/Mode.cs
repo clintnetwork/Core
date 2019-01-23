@@ -17,6 +17,11 @@ namespace TypeDB
         /// <summary>
         /// Connect the TypeDB Instance to a TypeDB Daemon
         /// </summary>
-        Remote
+        Remote,
+
+        /// <summary>
+        /// Warning: this mode can only be used in a TypeDB Server
+        /// </summary>
+        OnlyForBinding
     }
 }
