@@ -22,6 +22,9 @@ Type-DB.Core is a library that allows you to store object locally (to use by exa
 
 I made Type-DB to meet the needs of any developer whether for an embedded project, to implement a cache system, or simply when you need a cool database, it is certain that you will love his modularity.
 
+## KeyObject Concept instead of KeyValue
+The Core Concept of Type-DB is to replace the old concept of KeyValue dictionnaries with a new KeyObject system, that allows you to store any .Net Objects directly into a Type-DB Instance (locally or remotely of course)
+
 ## Basic Usage
 
 If you need a simple C# snippet to understand what is Type-DB, take a look here:
