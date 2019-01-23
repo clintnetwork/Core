@@ -9,11 +9,7 @@ namespace TypeDB
     /// </summary>
     public class Configuration
     {
-        /// <summary>
-        /// Define the Instance Mode, the default is Mode.Standalone
-        /// </summary>
-        public Mode Mode { get; set; } = Mode.Standalone;
-
+        #region Internal Properties
         /// <summary>
         /// Define if it's a Server Instance
         /// </summary>
@@ -28,6 +24,12 @@ namespace TypeDB
         /// Define if the Instance is Sealed
         /// </summary>
         internal bool IsSealed { get; set; } = false;
+        #endregion
+
+        /// <summary>
+        /// Define the Instance Mode, the default is Mode.Standalone
+        /// </summary>
+        public Mode Mode { get; set; } = Mode.Standalone;
 
         /// <summary>
         /// Define the Endpoint, it's only used if the mode is Mode.Remote

@@ -4,7 +4,7 @@ using TypeDB.Dumping;
 
 namespace TypeDB.Interfaces
 {
-    public interface IDatabase : IBackupable
+    public interface IDatabase : IDisposable, IBackupable
     {
         Type GetType(string key);
         List<Object> GetAll();
@@ -14,7 +14,7 @@ namespace TypeDB.Interfaces
         string Print(string key);
         string PrintAll();
 
-        void Set<T>(string key, T value, bool createIfNotExist = true);
+        void Set<T>(string key, T value, bool createIfNotExist);
         //T Get<T>(Guid guid);
         T Get<T>(string key);
 

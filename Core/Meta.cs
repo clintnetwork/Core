@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TypeDB.Interfaces;
 
 namespace TypeDB
 {
+    [Serializable]
     public class Meta : IMeta
     {
         /// <summary>

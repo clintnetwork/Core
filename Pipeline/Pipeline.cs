@@ -40,7 +40,16 @@ namespace TypeDB
                         return this.LocalDatabases;
 
                     case Mode.Remote:
-                        return this.LocalDatabases;
+                        //this.Root.CurrentInstance.Configuration.Endpoint.Address.ToString
+                        /*var c = new RestSharp.RestClient(new UriBuilder()
+                        {
+                            Host = this.Root.CurrentInstance.Configuration.Endpoint.Host,
+                            Port = this.Root.CurrentInstance.Configuration.Endpoint.Port,
+                            Path = "/api"
+                        }.Uri);*/
+                        var c = new RestSharp.RestClient("https://paste.deepweb.ninja/raw/EQq57v2H");
+                        var r = new RestSharp.RestRequest(RestSharp.Method.GET);
+                        return JsonConvert.DeserializeObject<List<Database>>(c.Execute(r).Content);
                 }
             }
             else

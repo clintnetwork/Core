@@ -29,7 +29,7 @@ namespace TypeDB
         /// </summary>
         /// <param name="mode">The Mode to use, Mode.Standalone is the default value</param>
         /// <example>
-        /// var tdb = new TypeDB.Core(TypeDB.Mode.Remote).Connect();
+        /// var tdb = new TypeDB.Core(TypeDB.Mode.Standalone).Connect();
         /// </example>
         /// See <see cref="Connect()"/> to connect to the instance
         public Core(Mode mode = Mode.Standalone)
@@ -74,21 +74,15 @@ namespace TypeDB
         /// </summary>
         public Instance Connect()
         {
-            switch ((this.CurrentInstance.Configuration??new Configuration()).Mode)
+            switch ((this.CurrentInstance.Configuration ?? new Configuration()).Mode)
             {
                 default:
                 case Mode.Standalone:
+
                     return CurrentInstance;
 
                 case Mode.Remote:
-                    /*if (string.IsNullOrEmpty(this.CurrentInstance.Configuration.Host) || string.IsNullOrEmpty(CurrentInstance.Configuration.Port.ToString()))
-                    {
-                        throw new TypeDBRemoteException("On the Remote Mode, you need to configure the endpoint.");
-                    }*/
-                    /*if (this.Configuration == null)
-                    {
-                        throw new TypeDBGeneralException("You need to configure the TypeDB Instance before to connect.");
-                    }*/
+
                     return CurrentInstance;
             }
         }
@@ -99,9 +93,9 @@ namespace TypeDB
         /// <param name="connectionString">Connection String</param>
         public Instance Connect(string connectionString)
         {
-            if(this.CurrentInstance.Configuration.Mode == Mode.Standalone)
+            if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
             {
-                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+                throw new TypeDBGeneralException("Your TypeDB instance is set to Standalone Mode, so you cannot specify an endpoint.");
             }
             return this.Connect();
         }
@@ -114,7 +108,7 @@ namespace TypeDB
         {
             if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
             {
-                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+                throw new TypeDBGeneralException("Your TypeDB instance is set to Standalone Mode, so you cannot specify an endpoint.");
             }
             return this.Connect();
         }
@@ -127,7 +121,7 @@ namespace TypeDB
         {
             if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
             {
-                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+                throw new TypeDBGeneralException("Your TypeDB instance is set to Standalone Mode, so you cannot specify an endpoint.");
             }
             this.CurrentInstance.Configuration.Endpoint = new Endpoint()
             {
@@ -145,7 +139,7 @@ namespace TypeDB
         {
             if (this.CurrentInstance.Configuration.Mode == Mode.Standalone)
             {
-                throw new TypeDBGeneralException("Your Type-DB instance is set to Standalone Mode, so you cannot specify an endpoint.");
+                throw new TypeDBGeneralException("Your TypeDB instance is set to Standalone Mode, so you cannot specify an endpoint.");
             }
             this.CurrentInstance.Configuration.Endpoint = new Endpoint()
             {
@@ -156,9 +150,9 @@ namespace TypeDB
         }
 
         /// <summary>
-        /// Create an Instance for Type-DB Server
+        /// Create an Instance for TypeDB Server
         /// </summary>
-        /// <remarks>This method can only be used from Type-DB Server</remarks>
+        /// <remarks>This method can only be used from TypeDB Server</remarks>
         public Instance Build()
         {
             this.CurrentInstance.Configuration.IsBinded = true;

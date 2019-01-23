@@ -20,20 +20,10 @@ namespace TypeDB
         internal Configuration Configuration { get; set; }
 
         /// <summary>
-        /// Define the Private Configuration
-        /// </summary>
-        //private readonly PrivateConfiguration privateConfiguration;
-
-        /// <summary>
         /// TypeDB Database List
         /// </summary>
         /// TODO: implement pipeline
         internal List<Database> Databases { get => this.Root.Pipeline.GetDatabases(); set => this.Root.Pipeline.SetDatabases(value); }
-
-        //private Authentication Authentication { get; set; }
-        //private List<Right> Rights { get; set; }
-        //private List<Trigger> Triggers { get; set; }
-        //private List<Script> Scripts { get; set; }
 
         /// <summary>
         /// Initialize a TypeDB Instance and the Database List
@@ -68,7 +58,7 @@ namespace TypeDB
         /// <param name="databaseName">'default' is the default database name</param>
         /// <param name="createIfNotExist">If the database does not exist, it will created automatically</param>
         /// <returns></returns>
-        public IDatabase OpenDatabase(string databaseName = "default", bool createIfNotExist = false)
+        public Database OpenDatabase(string databaseName = "default", bool createIfNotExist = false)
         {
             if (this.Databases.Any(x => x.Name.Equals(databaseName)))
             {
@@ -87,13 +77,6 @@ namespace TypeDB
             {
                 throw new TypeDBNotFoundException($"The database '{databaseName}' does not exist.");
             }
-        }
-
-        private void SetAndEmitDatabase(Database database)
-        {
-            var tempDatabases = this.Databases;
-            tempDatabases.Add(database);
-            this.Databases = tempDatabases;
         }
 
         /// <summary>
@@ -126,6 +109,14 @@ namespace TypeDB
             {
                 throw new TypeDBNotFoundException($"The database '{databaseName}' does not exist.");
             }
+        }
+
+        // TODO: change this
+        private void SetAndEmitDatabase(Database database)
+        {
+            var tempDatabases = this.Databases;
+            tempDatabases.Add(database);
+            this.Databases = tempDatabases;
         }
 
         /// <summary>

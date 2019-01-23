@@ -18,7 +18,7 @@ namespace TypeDB
         /// <summary>
         /// The parent Instance
         /// </summary>
-        public Instance Instance { get; set; }
+        internal Instance Instance { get; set; }
 
         /// <summary>
         /// The Databae Name
@@ -91,7 +91,6 @@ namespace TypeDB
         /// <param name="key">Object Key</param>
         /// <param name="value">Object Value</param>
         /// <param name="createIfNotExist">Create the object if it does not already exist, true by default</param>
-        
         public void Set<T>(string key, T value, bool createIfNotExist = true)
         {
             if (!this.Objects.Any(x => x.Key.Equals(key)) && createIfNotExist)
@@ -121,6 +120,11 @@ namespace TypeDB
             {
                 throw new TypeDBNotFoundException($"The object '{key}' does not exists");
             }
+        }
+
+        public void Set<T>(string _namespace, string key, T value, bool createIfNotExist = true)
+        {
+
         }
 
         public int Update<T>(string key, T value)
@@ -240,7 +244,12 @@ namespace TypeDB
         #endregion
 
         #region Dumping
-        public string Dump()
+        public string Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveAs(string filename)
         {
             throw new NotImplementedException();
         }
@@ -250,15 +259,14 @@ namespace TypeDB
             throw new NotImplementedException();
         }
 
-        public void DumpToFile(string filename)
-        {
-            throw new NotImplementedException();
-        }
-
         public void RestoreFromFile(string filename)
         {
             throw new NotImplementedException();
         }
         #endregion
+
+        public void Dispose()
+        {
+        }
     }
 }   

@@ -5,15 +5,28 @@ using TypeDB.Interfaces;
 namespace TypeDB
 {
     /// <summary>
-    /// TypeDB Object
+    /// A TypeDB Object
     /// </summary>
     [Serializable]
     public class Object : IObject
     {
+        // TODO: to remove
         private string _value;
 
+        /// <summary>
+        /// TypeDB Object's GUID
+        /// </summary>
         public Guid Guid { get; set; } = Guid.NewGuid();
 
+        /// <summary>
+        /// TypeDB Object's Hash
+        /// </summary>
+        public string Hash { get; set; }
+
+        /// <summary>
+        /// TypeDB Object's Namespace
+        /// </summary>
+        // TODO: see how to implement
         public string Namespace { get; set; } = "/";
         
         /// <summary>
