@@ -1,9 +1,4 @@
 # Type-DB.Core
-
-----
-> **Warning**: Type-DB is currently in construction, if you would like to help us, contact me@clint.network
-----
-
 Type-DB is a serialized, in-memory and strongly typed database system developed in C#.
 
 **Official Type-DB Documentation:** https://type-db.gitbook.io/overview
