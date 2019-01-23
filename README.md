@@ -1,4 +1,7 @@
 # Type-DB.Core
+> **Warning**: Type-DB is currently in construction, if you would like to help us, contact me@clint.network
+
+
 Type-DB is a serialized, in-memory and strongly typed database system developed in C#.
 
 **Official Type-DB Documentation:** https://type-db.gitbook.io/overview
@@ -16,8 +19,6 @@ Type-DB is a serialized, in-memory and strongly typed database system developed 
 Type-DB.Core is a library that allows you to store object locally (to use by example in an embedded project) or remotely in a Type-DB Server (see [Standalone or Remote Mode](#standalone-or-remote-mode))
 
 I made Type-DB to meet the needs of any developer whether for an embedded project, to implement a cache system, or simply when you need a cool database, it is certain that you will love his modularity.
-
-> **Warning**: Type-DB is currently in construction, if you would like to help us, contact me@clint.network
 
 ### Basic Usage
 
