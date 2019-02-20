@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 using TypeDB.Exceptions;
+using TypeDB.Extensions;
 
 namespace TypeDB
 {

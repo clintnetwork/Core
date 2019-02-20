@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TypeDB
+namespace TypeDB.Extensions
 {
     public static class EntitiesExtensions
     {

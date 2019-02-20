@@ -124,7 +124,7 @@ namespace TypeDB
         /// <summary>
         ///  Connect the configured Instance with a specific Endpoint
         /// </summary>
-        /// <param name="connectionString">Endpoint as Connection String</param>
+        /// <param name="endpoint">Endpoint as Connection String</param>
         /// <see cref="Endpoint" />
         public Instance Connect(Endpoint endpoint)
         {

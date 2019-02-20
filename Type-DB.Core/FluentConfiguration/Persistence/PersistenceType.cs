@@ -8,9 +8,9 @@ namespace TypeDB
         None,
 
         /// <summary>
-        /// Persistence is executed when Configuration.Persistence.Execute() is invoked
+        /// Persistence is executed when TypeDB.Persistence.Invoke() is invoked
         /// </summary>
-        /// See <see cref="Configuration.Persistence.Execute()" />
+        /// See <see cref="TypeDB.Persistence.Invoke()" />
         OnlyInvoke,
 
         /// <summary>

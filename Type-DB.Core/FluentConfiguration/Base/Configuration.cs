@@ -81,7 +81,7 @@ namespace TypeDB
         /// Export the current Configuration in a JSON File
         /// </summary>
         /// <param name="configurationFile">The JSON filename/path</param>
-        /// <param name="formated">Specify if the JSON will formatted</param>
+        /// <param name="formatting">Specify if the JSON will formatted</param>
         public void SaveToFile(string configurationFile, bool formatting = true)
         {
             File.WriteAllText(configurationFile, JsonConvert.SerializeObject(this, formatting ? Formatting.Indented : Formatting.None));

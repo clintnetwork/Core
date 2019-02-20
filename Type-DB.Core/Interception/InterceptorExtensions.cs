@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using TypeDB.Extensions;
 
 namespace TypeDB.Interception
 {
