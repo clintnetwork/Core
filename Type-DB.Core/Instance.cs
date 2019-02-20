@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TypeDB.Exceptions;
 using System.Reflection;
+using System.Threading;
 
 namespace TypeDB
 {
@@ -20,6 +21,8 @@ namespace TypeDB
         /// TypeDB Instance Configuration
         /// </summary>
         public Configuration Configuration { get; set; }
+
+        internal List<Timer> TimersHoster { get; set; } = new List<Timer>();
 
         /// <summary>
         /// TypeDB Database List

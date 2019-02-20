@@ -340,6 +340,8 @@ namespace TypeDB
                 metas.Expiration = DateTime.UtcNow.AddMinutes(ttl.TotalMinutes);
                 metas.IsUpdated = true;
                 Entities[collection][key].Meta = metas;
+
+                Instance.TimersHoster.Add(new Timer(x => Drop(collection, key), null, ttl, TimeSpan.Zero));
             }
 
             // Execute the Persistence when needed
