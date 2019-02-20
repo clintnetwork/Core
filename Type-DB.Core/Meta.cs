@@ -19,7 +19,7 @@ namespace TypeDB
         /// <summary>
         /// Define if the Object has an expiration
         /// </summary>
-        public DateTime? Expiration { get; set; }
+        public TimeSpan? Expiration { get; set; }
 
         /// <summary>
         /// Define if the object is edited

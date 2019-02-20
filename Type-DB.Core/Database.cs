@@ -337,7 +337,7 @@ namespace TypeDB
             if (Exist(collection, key))
             {
                 Meta metas = Entities[collection][key].Meta;
-                metas.Expiration = DateTime.UtcNow.AddMinutes(ttl.TotalMinutes);
+                metas.Expiration = ttl;
                 metas.IsUpdated = true;
                 Entities[collection][key].Meta = metas;
 

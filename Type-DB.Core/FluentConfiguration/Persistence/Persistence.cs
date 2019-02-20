@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Newtonsoft.Json;
 using TypeDB.Exceptions;
 using TypeDB.Extensions;
@@ -50,7 +51,12 @@ namespace TypeDB
                     {
                         foreach (var entityItem in File.ReadAllLines(file).ToList())
                         {
-                            db.AddEntity(collection, JsonConvert.DeserializeObject<Entity>(entityItem));
+                            var entity = JsonConvert.DeserializeObject<Entity>(entityItem);
+                            if(entity.Meta.Expiration.HasValue)
+                            {
+                                instance.TimersHoster.Add(new Timer(x => db.Drop(collection, entity.Key), null, entity.Meta.Expiration.Value, TimeSpan.Zero));
+                            }
+                            db.AddEntity(collection, entity);
                         }
                     }
                 }
