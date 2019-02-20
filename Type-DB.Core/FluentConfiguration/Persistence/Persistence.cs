@@ -31,6 +31,7 @@ namespace TypeDB
 
         public static string TemporaryLocation { get => Path.Combine(Path.GetTempPath(), "TypeDB"); }
         public static string ApplicationDataLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TypeDB"); }
+        public static string CurrentLocation { get => Directory.GetCurrentDirectory(); }
 
         /// <summary>
         /// Fetch the datas from the Location property and add it 
