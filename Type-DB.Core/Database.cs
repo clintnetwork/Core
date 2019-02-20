@@ -140,11 +140,11 @@ namespace TypeDB
         /// <param name="key">Entity key</param>
         /// <param name="value">Entity Value</param>
         /// <param name="createIfNotExist">Define if the entity will be created if does not exists</param>
-        [Interception(MethodName = nameof(Set), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Set, Type = InterceptionType.Setter)]
         public void Set<T>(string collection, string key, T value, bool createIfNotExist = true)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key, Value = value })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key, Value = value })) return;
             #endregion
             Dictionary<string, Entity> coll;
 
@@ -190,8 +190,7 @@ namespace TypeDB
                 throw new TypeDBNotFoundException($"The entity '{key}' does not exists");
             }
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
@@ -225,8 +224,8 @@ namespace TypeDB
         // For now we'll leave it with explicit dictionary, and then we must perform performance test validation.
         public Dictionary<string, T> Filter<T>(string collection, Func<T, bool> predicate, bool parallel = false)
         {
-            // #region Setter Method Interceptor (SMI)
-            // if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection })) return;
+            // #region Pre Execution Interception
+            // if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection })) return;
             // #endregion
 
             Dictionary<string, Entity> coll = Entities[collection];
@@ -327,11 +326,11 @@ namespace TypeDB
         /// <param name="collection">Entity collection</param>
         /// <param name="key">Entity key</param>
         /// <param name="ttl">Time to Live</param>
-        [Interception(MethodName = nameof(Expire), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Expire, Type = InterceptionType.Setter)]
         public void Expire(string collection, string key, TimeSpan ttl)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
             #endregion
 
             if (Exist(collection, key))
@@ -344,8 +343,7 @@ namespace TypeDB
                 Instance.TimersHoster.Add(new Timer(x => Drop(collection, key), null, ttl, TimeSpan.Zero));
             }
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
@@ -363,11 +361,11 @@ namespace TypeDB
         /// </summary>
         /// <param name="collection">Entity collection</param>
         /// <param name="key">Entity key</param>
-        // [Interception(MethodName = nameof("Lock"), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Lock)]
         public void Lock(string collection, string key)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
             #endregion
 
             if (Exist(collection, key))
@@ -378,8 +376,7 @@ namespace TypeDB
                 Entities[collection][key].Meta = metas;
             }
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
@@ -397,10 +394,11 @@ namespace TypeDB
         /// </summary>
         /// <param name="collection">Entity collection</param>
         /// <param name="key">Entity key</param>
+        [Interception(Method = MethodType.Unlock)]
         public void Unlock(string collection, string key)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
             #endregion
 
             if (Exist(collection, key))
@@ -411,8 +409,7 @@ namespace TypeDB
                 Entities[collection][key].Meta = metas;
             }
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         public void Decrement<T>(string key, T value) where T : struct
@@ -427,7 +424,7 @@ namespace TypeDB
         /// </summary>
         public void Increment<T>(string key, T value) where T : struct
         {
-            // #region Setter Method Interceptor (SMI)
+            // #region Pre Execution Interception
             // Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key, Value = value });
             // #endregion
 
@@ -462,8 +459,7 @@ namespace TypeDB
                 throw new TypeDBValueException("Unable to Increment the value, it's not a numeric type.");
             }
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
@@ -481,17 +477,16 @@ namespace TypeDB
         /// </summary>
         /// <param name="collection">Entity collection</param>
         /// <param name="key">Entity key</param>
-        [Interception(MethodName = nameof(Drop), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Drop, Type = InterceptionType.Setter)]
         public void Drop(string collection, string key)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection, Key = key })) return;
             #endregion
 
             Entities[collection].Remove(key);
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
@@ -499,33 +494,31 @@ namespace TypeDB
         /// </summary>
         /// <param name="collection">Collection to clear</param>
 
-        [Interception(MethodName = nameof(Clear), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Clear, Type = InterceptionType.Setter)]
         public void Clear(string collection)
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { Collection = collection })) return;
             #endregion
 
             Entities[collection].Clear();
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         /// <summary>
         /// Clear all Databases Entities
         /// </summary>
-        [Interception(MethodName = nameof(Clear), Type = InterceptionType.Setter)]
+        [Interception(Method = MethodType.Clear, Type = InterceptionType.Setter)]
         public void Clear()
         {
-            #region Setter Method Interceptor (SMI)
-            if (this.Interceptor(Instance, MethodBase.GetCurrentMethod(), new DTO { })) return;
+            #region Pre Execution Interception
+            if (this.PreExecution(Instance, MethodBase.GetCurrentMethod(), new DTO { })) return;
             #endregion
 
             Entities.Clear();
 
-            // Execute the Persistence when needed
-            this.PersistenceInterceptor(Instance);
+            this.PostExecution(Instance);
         }
 
         public void Dispose() { }

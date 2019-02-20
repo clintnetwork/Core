@@ -3,7 +3,7 @@ using System;
 namespace TypeDB.Interception
 {
     [Serializable]
-    internal class DTO
+    public class DTO
     {
         public string Collection { get; set; }
         public string Key { get; set; }
