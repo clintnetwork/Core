@@ -22,7 +22,6 @@ namespace TypeDB.Interception
                     var entity = currentDatabase.GetEntity(dto.Collection, dto.Key);
                     if(entity.Meta.IsLocked)
                     {
-                        Console.WriteLine("locked");
                         return true;
                     }
                 }

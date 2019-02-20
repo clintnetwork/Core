@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
-    <id>TypeDBCore</id>
-    <version>0.0.0.144</version>
+    <id>Type-DB.Core</id>
+    <version>0.0.0.400-alpha</version>
     <title>Type-DB.Core</title>
     <authors>Clint.Network</authors>
     <owners>Clint.Network</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
-    <projectUrl>https://typedb.rocks</projectUrl>
+    <projectUrl>https://typedb.rocks/</projectUrl>
     <iconUrl>https://avatars0.githubusercontent.com/u/46815662</iconUrl>
     <description>Type-DB is a serialized, embedded, strongly-typed, in-memory database, that can be used in a Standalone or a Remote Mode backed with a Type-DB Server.
 
@@ -21,13 +21,14 @@ Type-DB Features:
 - Signed Objects
 - Replication</description>
     <summary>💡 It's a serialized  in-memory and strongly typed database developed in C#</summary>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>Pre-Alpha version including Standard Methods and Persistence only</releaseNotes>
     <copyright>Copyright © 2019 Type-DB - All Rights Reserved</copyright>
     <language>en-US</language>
-    <tags>inmemory-db cache json serializable strongly-typed database cache</tags>
+    <tags>inmemory-db cache json serializable strongly-typed database</tags>
     <repository type="git" url="https://github.com/Type-DB/Core" branch="master" commit="6a9006471230a4c9ccedabf5caf2a7a95eeec8e8" />
   </metadata>
   <files>
+    <file src="content\netstandard2.0\Type-DB.dll" target="content\netstandard2.0\Type-DB.dll" />
     <file src="LICENSE.md" target="LICENSE.md" />
     <file src="README.md" target="README.md" />
   </files>
