@@ -25,16 +25,6 @@ namespace TypeDB
         internal Pipeline Pipeline { get; set; }
 
         /// <summary>
-        /// Initialize TypeDB
-        /// </summary>
-        public Core()
-        {
-            // _logger = loggerFactory.CreateLogger<Core>();
-            this.Pipeline = new Pipeline(this);
-            this.CurrentInstance = new Instance(this);
-        }
-
-        /// <summary>
         /// Initialize TypeDB and define a running Mode
         /// </summary>
         /// <param name="mode">The Mode to use, Mode.Standalone is the default value</param>
