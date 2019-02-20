@@ -8,7 +8,7 @@ Type-DB is a serialized, in-memory and strongly typed database system developed 
 
 **NuGet Package:** <https://www.nuget.org/packages/Type-DB.Core>
 
-[![Build Status](https://travis-ci.com/Type-DB/Core.svg?branch=development)](https://travis-ci.com/Type-DB/Core)
+[![Build Status](https://travis-ci.org/Type-DB/Core.svg?branch=development)](https://travis-ci.org/Type-DB/Core)
 ![Gitter Chat](https://badges.gitter.im/typedb-core.png)
 [![NuGet](https://img.shields.io/badge/NuGet-0.0.0.152-blue.svg)](https://www.nuget.org/packages/Type-DB.Core)
 
