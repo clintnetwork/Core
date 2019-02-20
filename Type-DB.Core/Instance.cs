@@ -23,6 +23,7 @@ namespace TypeDB
         public Configuration Configuration { get; set; }
 
         internal List<Timer> TimersHoster { get; set; } = new List<Timer>();
+        internal List<Trigger> Triggers { get; set; } = new List<Trigger>();
 
         /// <summary>
         /// TypeDB Database List

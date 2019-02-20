@@ -101,12 +101,19 @@ namespace TypeDB
             return this;
         }
 
+        public Core UseTriggers(Trigger[] triggers)
+        {
+            CurrentInstance.Triggers.AddRange(triggers);
+            return this;
+        }
+
         /// <summary>
         /// Setup Triggers fo the Current Instance
         /// </summary>
         /// <returns>Return the Core Instance</returns>
-        public Core UseTriggers()
+        public Core UseTriggers(Trigger trigger)
         {
+            CurrentInstance.Triggers.Add(trigger);
             return this;
         }
 
