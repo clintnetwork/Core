@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace TypeDB
+namespace TypeDB.Extensions
 {
     public static class PrintingExtension
     {
