@@ -27,12 +27,6 @@ namespace TypeDB
         public string Hash { get; set; }
 
         /// <summary>
-        /// TypeDB Object's Namespace
-        /// </summary>
-        // TODO: see how to implement
-        public string Namespace { get; set; } = "/";
-
-        /// <summary>
         /// TypeDB Object's Key
         /// </summary>
         public string Key { get; set; }
