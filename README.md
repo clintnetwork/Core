@@ -26,7 +26,7 @@ If you need a simple C# snippet to understand what is Type-DB, take a look here:
 
 ```csharp
 using (var tdb = new TypeDB.Core(Mode.Standalone).Connect())
-using(var db = tdb.OpenDatabase("test", true))
+using (var db = tdb.OpenDatabase("test", true))
 {
     db.Set<int>("NumberOfCars", 28);
     var numberOfCars = db.Get<int>("NumberOfCars");
