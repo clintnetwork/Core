@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>Type-DB</Company>
+    <Title>Type-DB.Core</Title>
     <Product>Type-DB.Core</Product>
     <Authors>Clint.Network</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -20,6 +21,7 @@
     <SignAssembly>false</SignAssembly>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <PackageReleaseNotes>Pre-Alpha version including Standard Methods and Persistence only</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,6 +44,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="RestSharp" Version="106.6.7" />
+  </ItemGroup>
+  
+  <ItemGroup>
+      <None Include="..\LICENSE.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
 </Project>
