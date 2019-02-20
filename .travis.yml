@@ -1,6 +1,9 @@
 language: csharp
 mono: none
-dotnet: 2.1.502
+sudo: required
+dist: xenial
+dotnet: 2.2
+solution: Type-DB.Core.sln
 script:
- - dotnet restore
- - dotnet build -c Release
+  - dotnet restore
+  - dotnet test Type-DB.Core.Tests/Type-DB.Core.Tests.csproj

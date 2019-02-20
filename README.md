@@ -1,38 +1,30 @@
-# Type-DB.Core
+# About Type-DB.Core
+
 Type-DB is a serialized, in-memory and strongly typed database system developed in C#.
 
-**Official Type-DB Documentation:** https://type-db.gitbook.io/overview
+**Official Type-DB Documentation:** <https://type-db.gitbook.io/overview>
 
-**Gitter Chat Room:** https://gitter.im/typedb-core
+**Gitter Chat Room:** <https://gitter.im/typedb-core>
 
-**Travis Status:** https://travis-ci.com/Type-DB/Core
+**NuGet Package:** <https://www.nuget.org/packages/Type-DB.Core>
 
 [![Build Status](https://travis-ci.com/Type-DB/Core.svg?branch=development)](https://travis-ci.com/Type-DB/Core)
-![](https://badges.gitter.im/typedb-core.png)
-![](https://img.shields.io/badge/NuGet-0.0.0.152-blue.svg)
+![Gitter Chat](https://badges.gitter.im/typedb-core.png)
+[![NuGet](https://img.shields.io/badge/NuGet-0.0.0.152-blue.svg)](https://www.nuget.org/packages/Type-DB.Core)
 
-## What is Type-DB ?
+## What is Type-DB
 
 Type-DB is made to meet the needs of any developer whether for an embedded project, to implement a cache system, or simply when you need a cool database, it is certain that you will love his modularity.
 
-## KeyObject Concept instead of KeyValue
+## Key-Object Concept instead of Key-Value
+
 The Core Concept of Type-DB is to replace the old concept of KeyValue dictionnaries with a new KeyObject system, that allows you to store any .Net Objects directly into a Type-DB Instance (see [Standalone or Remote Mode](#standalone-or-remote-mode))
 
 ## Basic Usage
 
 If you need a simple C# snippet to understand what is Type-DB, take a look here:
-```csharp
-var tdb = new TypeDB.Core(TypeDB.Mode.Standalone).Connect();
 
-var testDatabase = tdb.OpenDatabase("test");
-
-testDatabase.KeyValue.Set<int>("NumberOfCars", 28);
-testDatabase.KeyValue.Increment<int>("NumberOfCars", 2);
-var numberOfCars = testDatabase.KeyValue.Get<int>("NumberOfCars");
-// numberOfCars equal to 30
-
-testDatabase.Flush();
-```
+![Basic Example](https://user-images.githubusercontent.com/5221349/52921571-cfcc1180-3318-11e9-9061-3bf58bab5c98.png)
 
 ### Standalone or Remote Mode
 
@@ -50,9 +42,10 @@ var tdb = new TypeDB.Core(TypeDB.Mode.Remote)
     .Connect();
 ```
 
-## Type-DB Features
+### Type-DB Features
 
 #### Authentication Methods
+
 There are three authentication methods:
 
 - Anonymous, it's the default authentication method
@@ -78,9 +71,5 @@ Any object stored in a database can be signed.
 By default, an instance run in-memory, by using `UsePersistence()` you can automatically make a local-copy of this instance in a temporary file.
 
 #### Triggers
+
 You can easily set triggers to your Type-DB database, when you make the operation of your choice and run an associated callback.
-
-
-
-
-

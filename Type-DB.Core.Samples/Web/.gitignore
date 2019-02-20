@@ -1,0 +1,5 @@
+bin/
+obj
+wwwroot/*.min.css
+wwwroot/*.min.js
+wwwroot/lib
