@@ -12,16 +12,26 @@
     <RepositoryUrl>https://github.com/Type-DB</RepositoryUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/46815662?s=200&amp;v=4</PackageIconUrl>
     <PackageId>Type-DB.Core</PackageId>
-    <Version>0.0.0.403-alpha</Version>
+    <Version>0.0.0.404-alpha</Version>
     <PackageTags>inmemory-db cache json serializable strongly-typed database</PackageTags>
-    <AssemblyVersion>0.0.0.403</AssemblyVersion>
+    <AssemblyVersion>0.0.0.404</AssemblyVersion>
     <RootNamespace>TypeDB</RootNamespace>
     <AssemblyName>Type-DB</AssemblyName>
     <Copyright>Copyright © 2019 TypeDB.rocks All Rights Reserved</Copyright>
     <SignAssembly>false</SignAssembly>
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <NoWarn>$(NoWarn);1591;1573</NoWarn>
     <PackageReleaseNotes>Pre-Alpha version including Standard Methods and Persistence only</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Description>Type-DB is a serialized, embedded, strongly-typed, in-memory database, that can be used in a Standalone or a Remote Mode backed with a Type-DB Server.	
+
+ Type-DB Features:	
+- Persistence	
+- Authentication	
+- Triggers	
+- Encryption	
+- Sealing	
+- Signed Objects	
+- Replication</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,6 +47,10 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\me\Projets\Type-DB\Core\Type-DB.Core\Type-DB.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
@@ -47,7 +61,7 @@
   </ItemGroup>
   
   <ItemGroup>
-      <None Include="..\LICENSE.md" Pack="true" PackagePath=""/>
+      <None Include="..\LICENSE.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
