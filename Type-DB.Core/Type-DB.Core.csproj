@@ -11,14 +11,15 @@
     <RepositoryUrl>https://github.com/Type-DB</RepositoryUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/46815662?s=200&amp;v=4</PackageIconUrl>
     <PackageId>Type-DB.Core</PackageId>
-    <Version>0.1</Version>
+    <Version>0.0.0.402-alpha</Version>
     <PackageTags>inmemory-db cache json serializable strongly-typed database</PackageTags>
-    <AssemblyVersion>0.0.0.400</AssemblyVersion>
+    <AssemblyVersion>0.0.0.402</AssemblyVersion>
     <RootNamespace>TypeDB</RootNamespace>
     <AssemblyName>Type-DB</AssemblyName>
-    <Copyright>Copyright (C) 2019 TypeDB.rocks All Rights Reserved</Copyright>
+    <Copyright>Copyright © 2019 TypeDB.rocks All Rights Reserved</Copyright>
     <SignAssembly>false</SignAssembly>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <PackageReleaseNotes>Pre-Alpha version including Standard Methods and Persistence only</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
