@@ -24,7 +24,15 @@ The Core Concept of Type-DB is to replace the old concept of KeyValue dictionnar
 
 If you need a simple C# snippet to understand what is Type-DB, take a look here:
 
-![Basic Example](https://user-images.githubusercontent.com/5221349/52921571-cfcc1180-3318-11e9-9061-3bf58bab5c98.png)
+```csharp
+using (var tdb = new TypeDB.Core(Mode.Standalone).Connect())
+using (var db = tdb.OpenDatabase("test", true))
+{
+    db.Set<int>("NumberOfCars", 28);
+    var numberOfCars = db.Get<int>("NumberOfCars");
+    Console.WriteLine(numberOfCars);
+}
+```
 
 ### Standalone or Remote Mode
 
