@@ -535,11 +535,11 @@ namespace TypeDB
         /// </summary>
         internal string GetCollectionByEntity(string key)
         {
-            if (Exist(key))
+            try
             {
                 return Entities.Where(x => x.Value.Keys.Contains(key)).FirstOrDefault().Key;
             }
-            else
+            catch
             {
                 throw new TypeDBGeneralException($"Unable to find '{key}' entity in any collection.");
             }
