@@ -30,12 +30,15 @@ namespace TypeDB.Interception
                 }
 
                 // Break the execution of the Method if Entity is Locked
-                if (currentDatabase.Exist(dto.Collection, dto.Key))
+                if (dto.Collection != null && dto.Key != null)
                 {
-                    var entity = currentDatabase.GetEntity(dto.Collection, dto.Key);
-                    if(entity.Meta.IsLocked)
+                    if (currentDatabase.Exist(dto.Collection, dto.Key))
                     {
-                        return true;
+                        var entity = currentDatabase.GetEntity(dto.Collection, dto.Key);
+                        if (entity.Meta.IsLocked)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
