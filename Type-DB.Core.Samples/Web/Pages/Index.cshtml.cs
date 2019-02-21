@@ -10,16 +10,16 @@ namespace TypeDB.Samples
 {
     public class IndexModel : PageModel
     {
-        private IOptions<Settings> _settings;
+        private readonly Database _settings;
 
-        public IndexModel(IOptions<Settings> settings)
+        public IndexModel(Database settings)
         {
             _settings = settings;
         }
         
         public void OnGet()
         {
-            var x = _settings.Value.FullName;
+            ViewData["Test"] = _settings.Get<DateTime>("date_time");
         }
     }
 }

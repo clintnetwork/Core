@@ -15,26 +15,33 @@ namespace TypeDB.Samples
 {
     public class Startup
     {
-        public Instance Instance { get; }
         public IConfiguration Configuration { get; }
+
+        public Instance Instance { get; }
+        public Database Settings { get; }
 
         public Startup(IConfiguration configuration)
         {
             Instance = new TypeDB.Core(Mode.Standalone)
             .UsePersistence(new Persistence
             {
-                Type = PersistenceType.Snapshot,
-                Interval = TimeSpan.FromSeconds(10),
+                Type = PersistenceType.Iteration,
                 Location = Persistence.TemporaryLocation
             })
             .Connect();
+            Settings = Instance.OpenDatabase("settings", true);
+
+            Settings.Set("date_time", DateTime.Now);
+
             Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTypeDBCache(Instance);
-            
+            services.AddSingleton<Database>(Settings);
+
+            // services.AddTypeDBCache(Instance);   // Under Construction
+
             services.AddMvc();
         }
 

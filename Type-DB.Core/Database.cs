@@ -535,7 +535,7 @@ namespace TypeDB
         /// </summary>
         internal string GetCollectionByEntity(string key)
         {
-            if (Entities.Any(x => x.Value.Keys.Contains(key)))
+            if (Exist(key))
             {
                 return Entities.Where(x => x.Value.Keys.Contains(key)).FirstOrDefault().Key;
             }
