@@ -64,6 +64,11 @@ namespace TypeDB.Extensions
             return list.Select(item => (T)item.Value.Value);
         }
 
+        /// <summary>
+        /// Return all databases Entities
+        /// </summary>
+        public static Dictionary<string, Dictionary<string, Entity>> GetAll(this Database currentDatabase) => currentDatabase.Entities;
+
         public static bool EntityExist(this Database currentDatabase, string collection, string key)
         {
             if(currentDatabase.Entities.Any(x => x.Key.Equals(collection)))
