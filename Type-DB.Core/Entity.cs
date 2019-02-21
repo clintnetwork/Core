@@ -9,10 +9,9 @@ namespace TypeDB
     [Serializable]
     public class Entity
     {
-        public static string NewId()
-        {
-            return Guid.NewGuid().ToString();
-        }
+        public static string NewId() => Guid.NewGuid().ToString();
+
+        public static string GetCollection<T>() => typeof(T).FullName;
 
         private object _value;
 
