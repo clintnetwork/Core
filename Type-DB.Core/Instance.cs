@@ -4,6 +4,7 @@ using System.Linq;
 using TypeDB.Exceptions;
 using System.Reflection;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace TypeDB
 {
@@ -29,7 +30,8 @@ namespace TypeDB
         /// TypeDB Database List
         /// </summary>
         /// TODO: implement pipeline
-        internal List<Database> Databases { get => this.Root.Pipeline.GetDatabases(); set => this.Root.Pipeline.SetDatabases(this.Databases, value); }
+        internal List<Database> Databases { get; set; } = new List<Database>();
+        //internal List<Database> Databases { get => this.Root.Pipeline.GetDatabases(); set => this.Root.Pipeline.SetDatabases(this.Databases, value); }
 
         /// <summary>
         /// Initialize a TypeDB Instance and the Database List
@@ -170,7 +172,7 @@ namespace TypeDB
 
         public override string ToString()
         {
-            return "lool";
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
