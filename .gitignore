@@ -331,6 +331,7 @@ ASALocalRun/
 .idea
 .vs
 .vscode
+.github
 
 bin
 obj
