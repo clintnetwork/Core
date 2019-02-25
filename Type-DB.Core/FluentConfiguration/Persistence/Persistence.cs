@@ -39,6 +39,11 @@ namespace TypeDB
         /// <param name="instance">Define the parent instance</param>
         internal void Fetch(Instance instance)
         {
+            if (!Directory.Exists(Location))
+            {
+                return;
+            }
+
             var persistenceFiles = Directory.GetFiles(Location, "*.db");
             foreach(var file in persistenceFiles)
             {
