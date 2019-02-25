@@ -97,7 +97,6 @@ namespace TypeDB
             catch (KeyNotFoundException)
             {
                 return false;
-                // throw new TypeDBNotFoundException($"The '{collection}' collection does not exist.");
             }
         }
 
@@ -215,7 +214,7 @@ namespace TypeDB
             }
             else
             {
-                throw new TypeDBValueException($"Unable to get the specified entity '{key}'.");
+                return default(T);
             }
         }
 
