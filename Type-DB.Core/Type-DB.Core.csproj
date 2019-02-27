@@ -15,7 +15,7 @@
     <PackageId>Type-DB.Core</PackageId>
     <Version>0.0.0.448-alpha</Version>
     <PackageTags>inmemory-db cache json serializable strongly-typed database</PackageTags>
-    <AssemblyVersion>0.0.0.448</AssemblyVersion>
+    <AssemblyVersion>0.0.0.449</AssemblyVersion>
     <RootNamespace>TypeDB</RootNamespace>
     <AssemblyName>Type-DB</AssemblyName>
     <Copyright>Copyright © 2019 TypeDB.rocks All Rights Reserved</Copyright>

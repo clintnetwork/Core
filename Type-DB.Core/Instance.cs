@@ -61,6 +61,11 @@ namespace TypeDB
             }
         }
 
+        public int Count
+        {
+            get => this.Databases.Count;
+        }
+
         /// <summary>
         /// Open a TypeDB database
         /// </summary>
