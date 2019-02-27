@@ -52,5 +52,10 @@ namespace TypeDB
             get => _value;
             set => _value = value;
         }
+
+        public override string ToString()
+        {
+            return this.Key;
+        }
     }
 }

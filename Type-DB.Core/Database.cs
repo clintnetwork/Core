@@ -522,6 +522,11 @@ namespace TypeDB
 
         public void Dispose() { }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
         private void MarkDirty(Entity entity)
         {
             // TODO: Implement logic to perform persistence when object becomes dirty.
