@@ -43,9 +43,9 @@ namespace TypeDB
             {
                 return;
             }
-
-            var persistenceFiles = Directory.GetFiles(Location, "*.db");
-            foreach(var file in persistenceFiles)
+            
+            var persistenceFiles = Directory.EnumerateFiles(Location, "*.*", SearchOption.TopDirectoryOnly).Where(x => x.EndsWith(".tdb") || x.EndsWith(".db")).ToArray();
+            foreach (var file in persistenceFiles)
             {
                 var persistenceFileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
                 var firstDotForSplit = persistenceFileNameWithoutExtension.IndexOf(".");
